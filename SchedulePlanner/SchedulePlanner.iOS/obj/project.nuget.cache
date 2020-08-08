@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "Uk1NcL4jKRddgitze4XHgjc+1PZA7BT8/SwFqwASYtM23XVizOPhv6gNFG7MGE88PQUokYI88oRdZ2GzNST+9w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jtmax\\source\\repos\\SchedulePlanner\\SchedulePlanner\\SchedulePlanner.iOS\\SchedulePlanner.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jtmax\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\jtmax\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.5.0.495\\xamarin.forms.4.5.0.495.nupkg.sha512"
+  ],
+  "logs": []
+}

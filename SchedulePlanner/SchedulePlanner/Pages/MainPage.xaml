@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:pages="clr-namespace:SchedulePlanner"
+            xmlns:behaviors="clr-namespace:SchedulePlanner"
+            mc:Ignorable="d"
+             x:Class="SchedulePlanner.MainPage"
+            BarBackgroundColor="#333333">
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="Home">
+        <AbsoluteLayout BackgroundColor="#1f1f1f">
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <ListView x:Name="GroupedView" SeparatorVisibility="None" IsGroupingEnabled="True">
+                    <ListView.Behaviors>
+                        <behaviors:DeselectItemBehavior/>
+                    </ListView.Behaviors>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.25*"/>
+                                        <ColumnDefinition Width="0.25*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox Grid.Column="1" VerticalOptions="Center" ClassId="{Binding PlanID}" CheckedChanged="CheckBox_Checked"/>
+                                    <Label Grid.Column="2" VerticalOptions="Center" Text="{Binding PlanName}" TextColor="White" ClassId="{Binding DateRepresentation}">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Edit_Event"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding DateRepresentation}" TextColor="White"/>
+                        </DataTemplate>
+                    </ListView.GroupHeaderTemplate>
+                </ListView>
+            </StackLayout>
+            <Button Text="+" FontSize="Large"  Clicked="Add_Clicked" BackgroundColor="#ff4133" TextColor="White"
+                    AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".95,.95,60,60" 
+                    CornerRadius="30"/>
+            <!--Start of Add Event Pop up window-->
+            <ContentView x:Name="AddEventPopUp" BackgroundColor="#333333" IsVisible="false" 
+                         AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".5,.5,300,300">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="0.3*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="0.8*"/>
+                        <ColumnDefinition Width="0.7*"/>
+                        <ColumnDefinition Width="0.1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
+                           Text="Add New Event" TextColor="White" FontSize="Large"/>
+                    <Entry x:Name="EntryField" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" HeightRequest="50" WidthRequest="265" 
+                           HorizontalOptions="Start"  VerticalOptions="Start" Keyboard="Text" TextColor="White" 
+                           Placeholder="Unnamed Event" Text="" PlaceholderColor="Gray" IsEnabled="True" Completed="On_Entry_Completed"/>
+                    <Label Grid.Row="3" Grid.Column="1" VerticalTextAlignment="Center" 
+                           Text="Date:" TextColor="White" FontSize="Medium"/>
+                    <DatePicker x:Name="DP" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="4" WidthRequest="210" HeightRequest="50"
+                                VerticalOptions="Start" HorizontalOptions="Start" TextColor="White" DateSelected="Date_Selected"/>
+                    <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" 
+                           Text="Remind Me:" TextColor="White" FontSize="Medium"/>
+                    <CheckBox x:Name="ReminderCheckBox" Grid.Row="4" Grid.Column="3" VerticalOptions="Center"/>
+                    <Button Grid.Row="5" Grid.Column="3" BackgroundColor="#333333" VerticalOptions="Center" HorizontalOptions="Start"
+                            Text="Cancel" TextColor="White" FontSize="Small" Clicked="Cancel_Add_Event"/>
+                    <Button Grid.Row="5" Grid.Column="4" BackgroundColor="#333333" VerticalOptions="Center" HorizontalOptions="Start"
+                            Text="Done" TextColor="White" FontSize="Small" Clicked="Finish_Add_Event"/>
+                </Grid>
+            </ContentView>
+            <!--End of Add Event Pop up Window-->
+            <!--Start of Edit Event Pop up Window-->
+            <ContentView x:Name="EditEventPopUp" BackgroundColor="#333333" IsVisible="false" 
+                         AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".5,.5,300,300">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="0.3*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="0.8*"/>
+                        <ColumnDefinition Width="0.7*"/>
+                        <ColumnDefinition Width="0.1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
+                           Text="Edit Event" TextColor="White" FontSize="Large"/>
+                    <Entry x:Name="EntryFieldEdit" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" HeightRequest="50" WidthRequest="265" 
+                           HorizontalOptions="Start"  VerticalOptions="Start" Keyboard="Text" TextColor="White" 
+                           Placeholder="Unnamed Event" Text="" PlaceholderColor="Gray" IsEnabled="True" Completed="On_Entry_Completed"/>
+                    <Label Grid.Row="3" Grid.Column="1" VerticalTextAlignment="Center" 
+                           Text="Date:" TextColor="White" FontSize="Medium"/>
+                    <DatePicker x:Name="DPEdit" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="4" WidthRequest="210" HeightRequest="50"
+                                VerticalOptions="Start" HorizontalOptions="Start" TextColor="White" DateSelected="Date_Selected"/>
+                    <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" 
+                           Text="Remind Me:" TextColor="White" FontSize="Medium"/>
+                    <CheckBox x:Name="ReminderCheckBoxEdit" Grid.Row="4" Grid.Column="3" VerticalOptions="Center"/>
+                    <Button Grid.Row="5" Grid.Column="3" BackgroundColor="#333333" VerticalOptions="Center" HorizontalOptions="Start"
+                            Text="Cancel" TextColor="White" FontSize="Small" Clicked="Cancel_Edit_Event"/>
+                    <Button Grid.Row="5" Grid.Column="4" BackgroundColor="#333333" VerticalOptions="Center" HorizontalOptions="Start"
+                            Text="Done" TextColor="White" FontSize="Small" Clicked="Finish_Edit_Event"/>
+                </Grid>
+            </ContentView>
+        </AbsoluteLayout>
+    </ContentPage>
+    <pages:CalendarPage/>
+    <pages:OptionsPage/>
+</TabbedPage>
