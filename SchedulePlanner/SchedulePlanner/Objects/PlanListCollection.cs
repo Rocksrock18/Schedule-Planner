@@ -13,7 +13,7 @@ namespace SchedulePlanner
     {
         public PlanListCollection()
         {
-
+            // constructor required for deserialization at startup
         }
 
         /// <summary>
@@ -39,26 +39,22 @@ namespace SchedulePlanner
         public void Add_By_Date(string newEvent, int newEventDate, int planID)
         {
             int end = Count;
-            int counter = 0;
-            bool placeFound = false;
-            while (!placeFound && counter < end)
+            int index = 0;
+            while(index < end)
             {
-                if (this[counter].Date > newEventDate)
+                if (this[index].Date > newEventDate)
                 {
-                    Add_To_New_List(counter, newEventDate, newEvent, planID);
-                    placeFound = true;
+                    Add_To_New_List(index, newEventDate, newEvent, planID);
+                    break;
                 }
-                else if (this[counter].Date == newEventDate)
+                else if (this[index].Date == newEventDate)
                 {
-                    Add_To_Existing(counter, newEventDate, newEvent, planID);
-                    placeFound = true;
+                    Add_To_Existing(index, newEventDate, newEvent, planID);
+                    break;
                 }
-                else
-                {
-                    counter++;
-                }
+                index++;
             }
-            if (counter == end)
+            if (index == end)
             {
                 Add_To_New_List(end, newEventDate, newEvent, planID);
             }
