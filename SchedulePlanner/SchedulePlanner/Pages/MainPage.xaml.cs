@@ -59,9 +59,7 @@ namespace SchedulePlanner
         private void Add_Clicked(object sender, EventArgs e)
         {
             if(busy)
-            {
                 return;
-            }
             busy = true;
             Initialize_Add_Event();
             AddEventPopUp.IsVisible = true;
@@ -114,9 +112,7 @@ namespace SchedulePlanner
         private void Edit_Event(object sender, EventArgs e)
         {
             if(busy)
-            {
                 return;
-            }
             busy = true;
             Label label = (Label)sender;
             DateTime dt = Conversion.Date_To_Date_Time(Conversion.String_To_Date(label.ClassId));

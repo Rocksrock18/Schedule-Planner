@@ -13,3 +13,4 @@ C:\Users\jtmax\source\repos\SchedulePlanner\SchedulePlanner\SchedulePlanner\obj\
 C:\Users\jtmax\source\repos\SchedulePlanner\SchedulePlanner\SchedulePlanner\obj\Debug\netstandard2.0\SchedulePlanner.dll
 C:\Users\jtmax\source\repos\SchedulePlanner\SchedulePlanner\SchedulePlanner\obj\Debug\netstandard2.0\ref\SchedulePlanner.dll
 C:\Users\jtmax\source\repos\SchedulePlanner\SchedulePlanner\SchedulePlanner\obj\Debug\netstandard2.0\SchedulePlanner.pdb
+C:\Users\jtmax\source\repos\SchedulePlanner\SchedulePlanner\SchedulePlanner\obj\Debug\netstandard2.0\SchedulePlanner.csprojAssemblyReference.cache

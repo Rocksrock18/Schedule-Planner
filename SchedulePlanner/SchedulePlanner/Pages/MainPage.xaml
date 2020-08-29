@@ -123,6 +123,7 @@
                             Text="Done" TextColor="White" FontSize="Small" Clicked="Finish_Edit_Event"/>
                 </Grid>
             </ContentView>
+            <!--End of Edit Event Pop up Window-->
         </AbsoluteLayout>
     </ContentPage>
     <pages:CalendarPage/>
